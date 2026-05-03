@@ -14,7 +14,7 @@ document.getElementById("akanForm").addEventListener("submit", function(e) {
 
     // Convert input to Date object
     const date = new Date(dob);
-    const dayNumber = date.getDay(); // 0 = Sunday, 6 = Saturday
+    const dayNumber = date.getDay(); 
 
     // Day names
     const days = [
