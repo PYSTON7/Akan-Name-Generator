@@ -80,3 +80,7 @@ button:hover {    background:linear-gradient(to bottom, #eb3b24, #e0e421,#129e02
     font-size: 18px;
     color: #333;
 }
+.dob:focus {
+    border-color: #fea64f;
+    box-shadow: 0 0 8px rgba(137, 254, 79, 0.826);
+}
