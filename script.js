@@ -1,51 +1,65 @@
-document.getElementById("akanForm").addEventListener("submit", function(e) {
+
+    document.getElementById("akanForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const dob = document.getElementById("dob").value;
+    
+    const day = parseInt(document.getElementById("day").value);
+    const month = parseInt(document.getElementById("month").value);
+    const year = parseInt(document.getElementById("year").value);
     const gender = document.getElementById("gender").value;
 
     const result = document.getElementById("result");
     const dayResult = document.getElementById("dayResult");
 
-    if (!dob || gender === "") {
-        result.textContent = "Please enter your birthdate and select gender.";
+  
+    if (
+        isNaN(day) || day < 1 || day > 31 ||
+        isNaN(month) || month < 1 || month > 12 ||
+        isNaN(year) ||
+        gender === ""
+    ) {
+        result.textContent = "Please enter valid day (1–31), month (1–12), year and select gender.";
         return;
     }
-// console.log("gender:", gender);
-// console.log("dob:", dob);
 
-    const date = new Date(dob);
-    const dayNumber = date.getDay(); 
+    
+    const CC = Math.floor(year / 100); 
+    const YY = year % 100;            
+    const MM = month;
+    const DD = day;
 
-    // console.log("Date of Birth:", dob);
-    // console.log("Day Number:", dayNumber);
+    // 4. Apply formula
+    let d = ((4 * CC - 2 * CC - 1) + (45 * YY) + (1026 * (MM + 1)) + DD) % 7;
 
-    // Day names
+    
+    if (d < 0) {
+        d = (d + 7) % 7;
+    }
+
+    // 5. Day names
     const days = [
         "Sunday", "Monday", "Tuesday",
         "Wednesday", "Thursday", "Friday", "Saturday"
     ];
-    // console.log("Days of the week:", days);
 
-    // Akan names
-    const maleNames = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"];
-    const femaleNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
-    console.log("Akan names:", gender === "male" ? maleNames : femaleNames);
+    // 6. Akan names
+    const maleNames = [
+        "Kwasi", "Kwadwo", "Kwabena",
+        "Kwaku", "Yaw", "Kofi", "Kwame"
+    ];
 
-    // Get date
-    const dayName = days[dayNumber];
-    const akanName = gender === "male" 
-        ? maleNames[dayNumber] 
-        : femaleNames[dayNumber];
+    const femaleNames = [
+        "Akosua", "Adwoa", "Abenaa",
+        "Akua", "Yaa", "Afua", "Ama"
+    ];
 
-        // console.log("Day Name:", dayName);
-        // console.log("Akan Name:", akanName);
+    
+    const dayName = days[d];
+    const akanName = gender === "male"
+        ? maleNames[d]
+        : femaleNames[d];
 
-    // Display results
+   
     dayResult.textContent = `You were born on: ${dayName}`;
     result.textContent = `Your Akan name is: ${akanName}`;
-
-    // console.log("day born:", dayResult.textContent);
-    // console.log("result:", result.textContent);
-    
 });

@@ -8,28 +8,39 @@
 </head>
 <body>
 
-     <h1>Akan Name Generator</h1>
-      <div class="star">★</div>
+    <h1>Akan Name Generator</h1>
+    <div class="star">★</div>
 
     <form id="akanForm">
-        <label for="dayOfWeek">Select your day of birth:</label>
+
+        <!-- Date input (UI stays the same) -->
+        <label for="dob">Select your date of birth:</label>
         <input type="date" id="dob" required>
-<select id="gender" required>
-    <option value="">Select gender</option>
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-</select>
-    <h2>Your Akan Name:</h2>
-         <p id="result">Your generated Akan name will appear here...</p>
-<section class="result"> 
-<p id="dayResult"></p>
-<p id="result"></p>
-</section>
-        </section>
-        <p id="result"></p>
+
+        <!-- Hidden inputs for formula -->
+        <input type="hidden" id="day">
+        <input type="hidden" id="month">
+        <input type="hidden" id="year">
+
+        <!-- Gender -->
+        <label for="gender">Select gender:</label>
+        <select id="gender" required>
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
         <button type="submit">Generate Akan Name</button>
+
     </form>
-    
+
+    <!-- Result Section -->
+    <section class="result"> 
+        <h2>Your Akan Name:</h2>
+        <p id="dayResult"></p>
+        <p id="result">Your generated Akan name will appear here...</p>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
