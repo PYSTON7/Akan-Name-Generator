@@ -12,7 +12,7 @@ document.getElementById("akanForm").addEventListener("submit", function(e) {
         return;
     }
 
-    // Convert input to Date object
+   
     const date = new Date(dob);
     const dayNumber = date.getDay(); 
 
@@ -35,4 +35,5 @@ document.getElementById("akanForm").addEventListener("submit", function(e) {
     // Display results
     dayResult.textContent = `You were born on: ${dayName}`;
     result.textContent = `Your Akan name is: ${akanName}`;
+    
 });
