@@ -12,7 +12,6 @@ document.getElementById("akanForm").addEventListener("submit", function(e) {
         return;
     }
 
-    // Split date (YYYY-MM-DD)
     const [year, month, day] = dob.split("-");
 
     const DD = parseInt(day);
@@ -20,7 +19,7 @@ document.getElementById("akanForm").addEventListener("submit", function(e) {
     const YY = parseInt(year.slice(2, 4));
     const CC = parseInt(year.slice(0, 2));
 
-    // Formula (corrected structure)
+    //formulae
     let d = (
         ( (4 * CC) - (2 * CC - 1) ) +
         (45 * YY) +
