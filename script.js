@@ -20,15 +20,25 @@ document.getElementById("akanForm").addEventListener("submit", function(e) {
     const CC = parseInt(year.slice(0, 2));
 
    //    CALCULATION
-    let x = (
+//    Calculate the day of the week using the formula:
+
+// d=((4CC​−2×CC−1)+(45×YY​)+(1026×(MM+1)​)+DD)mod7
+// Where:
+
+// CC is the first two digits of the year (e.g., for 1989, CC = 19)
+// YY is the last two digits of the year (e.g., for 1989, YY = 89)
+// MM is the month
+// DD is the day of the month
+// mod is the modulus operator %
+    let d = (
         ( (4 * CC) - (2 * CC - 1) ) +
         (45 * YY) +
         (1026 * (MM + 1)) +
         DD
     ) % 7;
 
-    if (x < 0) {
-        x = (x + 7) % 7;
+    if (d < 0) {
+        d = (d + 7) % 7;
     }
 
     // Days of the week
@@ -41,12 +51,21 @@ document.getElementById("akanForm").addEventListener("submit", function(e) {
     const maleNames = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"];
     const femaleNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
 
-    const dayName = days[x];
+    const dayName = days[d];
     const akanName = gender === "male"
-        ? maleNames[x]
-        : femaleNames[x];
+        ? maleNames[d]
+        : femaleNames[d];
 
    
     dayResult.textContent = `You were born on: ${dayName}`;
-    result.textContent = `Your Akan name is: ${akanName}`;
-});
+    result.textContent = `Your Akan name is: ${akanName}`; });
+
+    // PRACTICEING WITH THE CALCULATION
+    console.log(`CC: ${CC}, YY: ${YY}, MM: ${MM}, DD: ${DD}`);
+    console.log(`Calculation steps:`);
+    console.log(`(4 * CC) - (2 * CC - 1): ${(4 * CC) - (2 * CC - 1)}`);
+    console.log(`45 * YY: ${45 * YY}`);
+    console.log(`1026 * (MM + 1): ${1026 * (MM + 1)}`);
+    console.log(`Total before modulo: ${(4 * CC) - (2 * CC - 1) + (45 * YY) + (1026 * (MM + 1)) + DD}`);
+    console.log(`d before adjustment: ${d}`);
+    console.log(`d after adjustment (if negative): ${d < 0 ? (d + 7) % 7 : d}`);
