@@ -33,7 +33,7 @@ To run this project locally:
 
   Behavior                          |  Input                           | Output                                 
 ---------------------------------------------------------------------------------------------------------- 
-  User enters birthdate and gender  |  Date: 2000-01-01, Gender: Male  | Displays day of the week and Akan name 
+  User enters birthdate and gender  |  Date:, Gender: Male             | Displays day of the week and Akan name 
   User submits empty form           |  No input                        | Shows error message                    
   User enters invalid date          |  Incorrect date                  | Prompts user to enter valid input      
 
