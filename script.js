@@ -54,15 +54,8 @@ document.getElementById("akanForm").addEventListener("submit", function(e) {
 //     console.log(`Total before modulo: ${(4 * CC) - (2 * CC - 1) + (45 * YY) + (1026 * (MM + 1)) + DD}`);
 //     console.log(`d before adjustment: ${d}`);
 //     console.log(`d after adjustment (if negative): ${d < 0 ? (d + 7) % 7 : d}`);
-    // function calculateDayOfWeek(year, month, day) {
-    // const CC = Math.floor(year / 100);
-    // const YY = year % 100;
-    // const MM = month;
-    // const DD = day;
-
-    // let d = ( ( (4 * CC) - (2 * CC - 1) ) +  (45 * YY) +(1026 * (MM + 1)) +  DD ) % 7;
-
-    // if (d < 0) { d = (d + 7) % 7; }
-
-    // return d;
-}
+//    function calculateDayOfWeek(CC, YY, MM, DD) {
+//     let d = ( ( (4 * CC) - (2 * CC - 1) ) +  (45 * YY) +(1026 * (MM + 1)) +  DD ) % 7;
+//     if (d < 0) { d = (d + 7) % 7; }
+//     return d;
+// }
