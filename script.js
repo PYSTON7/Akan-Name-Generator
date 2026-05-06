@@ -19,31 +19,30 @@ document.getElementById("akanForm").addEventListener("submit", function(e) {
     const YY = parseInt(year.slice(2, 4));
     const CC = parseInt(year.slice(0, 2));
 
-   //    CALCULATION
-// d=((4CC​−2×CC−1)+(45×YY​)+(1026×(MM+1)​)+DD)mod7
-
-    let d = ( ( (4 * CC) - (2 * CC - 1) ) +  (45 * YY) +(1026 * (MM + 1)) +  DD ) % 7;
+    let d = ( ( (4 * CC) - (2 * CC - 1) ) + (45 * YY) + (1026 * (MM + 1)) + DD ) % 7;
 
     if (d < 0) { d = (d + 7) % 7; }
 
-    // Days of the week
-    const days = [
-        "Sunday", "Monday", "Tuesday",
-        "Wednesday", "Thursday", "Friday", "Saturday"
-    ];
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    // Akan names
     const maleNames = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"];
     const femaleNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
 
     const dayName = days[d];
-    const akanName = gender === "male"
-        ? maleNames[d]
-        : femaleNames[d];
+    const akanName = gender === "male" ? maleNames[d] : femaleNames[d];
 
-   
     dayResult.textContent = `You were born on: ${dayName}`;
-    result.textContent = `Your Akan name is: ${akanName}`; });
+    result.textContent = `Your Akan name is: ${akanName}`;
+
+    // Clear results and reset form after 5 seconds
+    setTimeout(() => {
+        result.textContent = "";
+        dayResult.textContent = "";
+        this.reset();
+
+    }, 5000);
+});
+    
 
 //     PRACTICEING WITH THE CALCULATION
 //     console.log(`CC: ${CC}, YY: ${YY}, MM: ${MM}, DD: ${DD}`);
