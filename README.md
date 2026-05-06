@@ -24,7 +24,7 @@ To run this project locally:
    cd Akan-Name-Generator
  
 
-3. Open the project:
+3. Open the project: https://pyston7.github.io/Akan-Name-Generator/
    Use a live server.
 
 
