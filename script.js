@@ -12,16 +12,22 @@ document.getElementById("akanForm").addEventListener("submit", function(e) {
         return;
     }
 
-    const [year, month, day] = dob.split("-");
+    let [year, month, day] = dob.split("-").map(Number);
 
-    const DD = parseInt(day);
-    const MM = parseInt(month);
-    const YY = parseInt(year.slice(2, 4));
-    const CC = parseInt(year.slice(0, 2));
+    if (month < 3) {
+        month += 12;
+        year -= 1;
+    }
 
-    let d = ( ( (4 * CC) - (2 * CC - 1) ) + (45 * YY) + (1026 * (MM + 1)) + DD ) % 7;
+    const DD = day;
+    const MM = month;
+    const YY = year % 100;
+    const CC = Math.floor(year / 100);
+
+    let d = (DD + Math.floor(13 * (MM + 1) / 5) + YY + Math.floor(YY / 4) + Math.floor(CC / 4) - 2 * CC) % 7;
 
     if (d < 0) { d = (d + 7) % 7; }
+     d = (d + 6) % 7;
 
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
